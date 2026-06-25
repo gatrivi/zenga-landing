@@ -327,6 +327,16 @@ textarea {
   border-radius: 999px;
 }
 
+.tagSoft {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+}
+
 .workImage {
   height: 160px;
   background: rgba(255, 255, 255, 0.02);

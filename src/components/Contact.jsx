@@ -15,7 +15,7 @@ export default function Contact({ contact }) {
 
               <div className="cardTags" style={{ marginTop: '1.1rem' }}>
                 {['Web apps', 'Stores', 'Dashboards', 'Automation', 'AI workflows'].map((t) => (
-                  <span key={t} className="tag" style={{ background: 'rgba(255,255,255,0.08)' }}>
+                  <span key={t} className="tagSoft">
                     {t}
                   </span>
                 ))}
