@@ -2,31 +2,33 @@ export default function Services({ services, features }) {
   return (
     <section id="services" className="section sectionAlt">
       <div className="container">
-        <div className="sectionHeader">
-          <div className="eyebrow">Services</div>
-          <h2 className="h2">ZengaSoft builds sharp web tools for small businesses</h2>
-          <p className="muted" style={{ marginTop: '0.45rem', maxWidth: 760 }}>
-            Landing pages, stores, dashboards, booking systems, automations, and AI helpers—built to save
-            time and keep things reliable.
-          </p>
-        </div>
+        <div className="pricingLayout">
+          <div className="sectionHeader" style={{ marginBottom: 0 }}>
+            <div className="eyebrow">Services</div>
+            <h2 className="h2">ZengaSoft builds sharp web tools for small businesses</h2>
+            <p className="muted" style={{ marginTop: '0.45rem', maxWidth: 520 }}>
+              Landing pages, stores, dashboards, booking systems, automations, and AI helpers—built to save
+              time and keep things reliable.
+            </p>
+          </div>
 
-        <div className="grid gridServices" style={{ marginTop: '1.3rem' }}>
-          {services.map((s) => (
-            <article key={s.title} className="card cardHover">
-              <div className="cardPad">
-                <h3 className="cardTitle">{s.title}</h3>
-                <p className="cardText">{s.description}</p>
-                <div className="cardTags" aria-label={`${s.title} tags`}>
-                  {s.tags.map((t) => (
-                    <span key={t} className="tag">
-                      {t}
-                    </span>
-                  ))}
+          <div className="grid gridServices" style={{ marginTop: 0 }}>
+            {services.map((s) => (
+              <article key={s.title} className="card cardHover">
+                <div className="cardPad">
+                  <h3 className="cardTitle">{s.title}</h3>
+                  <p className="cardText">{s.description}</p>
+                  <div className="cardTags" aria-label={`${s.title} tags`}>
+                    {s.tags.map((t) => (
+                      <span key={t} className="tag">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
 
         <div className="sectionHeader" style={{ marginTop: '2.3rem' }}>
