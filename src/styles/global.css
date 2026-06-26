@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Fragment+Mono:wght@400;500;600&display=swap');
 
 :root {
-  --bg: #070a12;
-  --bg2: #0b1220;
-  --panel: rgba(255, 255, 255, 0.04);
+  --bg: #000000;
+  --bg2: #07080f;
+  --panel: rgba(255, 255, 255, 0.03);
   --panel2: rgba(255, 255, 255, 0.06);
   --border: rgba(255, 255, 255, 0.12);
   --text: rgba(255, 255, 255, 0.92);
-  --muted: rgba(255, 255, 255, 0.7);
-  --muted2: rgba(255, 255, 255, 0.55);
-  --accent: #f59e0b;
-  --accent2: #fbbf24;
+  --muted: rgba(255, 255, 255, 0.72);
+  --muted2: rgba(255, 255, 255, 0.54);
+  --accent: #fecd1a;
+  --accent2: #84e6f6;
 }
 
 * {
@@ -23,10 +23,11 @@ html {
 
 body {
   margin: 0;
-  background: radial-gradient(1200px 700px at 15% 0%, rgba(245, 158, 11, 0.15), transparent 55%),
-    radial-gradient(1000px 600px at 90% 10%, rgba(251, 191, 36, 0.12), transparent 50%), var(--bg);
+  background: radial-gradient(1000px 520px at 15% 0%, rgba(254, 205, 26, 0.18), transparent 60%),
+    radial-gradient(900px 520px at 90% 15%, rgba(132, 230, 246, 0.12), transparent 55%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg2) 60%, var(--bg) 100%);
   color: var(--text);
-  font-family: Nunito, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: Albert Sans, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -41,7 +42,7 @@ textarea {
 }
 
 :focus-visible {
-  outline: 2px solid rgba(245, 158, 11, 0.95);
+  outline: 2px solid rgba(254, 205, 26, 0.95);
   outline-offset: 2px;
 }
 
@@ -68,7 +69,7 @@ textarea {
 }
 
 .section {
-  padding: 70px 0;
+  padding: 78px 0;
 }
 
 .sectionAlt {
@@ -76,22 +77,23 @@ textarea {
 }
 
 .eyebrow {
-  color: var(--muted2);
+  color: var(--accent2);
   font-size: 0.95rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 700;
+  font-family: "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .h1 {
-  font-family: Comfortaa, Nunito, system-ui, sans-serif;
+  font-family: Albert Sans, system-ui, sans-serif;
   font-size: clamp(2.05rem, 3.3vw, 3.1rem);
   line-height: 1.05;
   margin: 0.8rem 0 1rem;
 }
 
 .h2 {
-  font-family: Comfortaa, Nunito, system-ui, sans-serif;
+  font-family: Albert Sans, system-ui, sans-serif;
   font-size: clamp(1.5rem, 2.2vw, 2.1rem);
   line-height: 1.15;
   margin: 0.4rem 0 0.9rem;
@@ -102,11 +104,11 @@ textarea {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.35);
 }
 
 .cardHover {
@@ -115,7 +117,7 @@ textarea {
 
 .cardHover:hover {
   transform: translateY(-3px);
-  border-color: rgba(245, 158, 11, 0.35);
+  border-color: rgba(254, 205, 26, 0.38);
   background: rgba(255, 255, 255, 0.055);
 }
 
@@ -160,13 +162,13 @@ textarea {
 }
 
 .btnPrimary {
-  background: linear-gradient(180deg, rgba(245, 158, 11, 0.98), rgba(245, 158, 11, 0.84));
-  color: rgba(0, 0, 0, 0.82);
-  border-color: rgba(245, 158, 11, 0.55);
+  background: linear-gradient(180deg, rgba(254, 205, 26, 1), rgba(254, 205, 26, 0.82));
+  color: rgba(0, 0, 0, 0.88);
+  border-color: rgba(254, 205, 26, 0.65);
 }
 
 .btnPrimary:hover {
-  background: linear-gradient(180deg, rgba(251, 191, 36, 0.98), rgba(245, 158, 11, 0.88));
+  background: linear-gradient(180deg, rgba(254, 205, 26, 1), rgba(251, 191, 36, 0.9));
 }
 
 .btnSecondary {
@@ -176,8 +178,8 @@ textarea {
 }
 
 .btnSecondary:hover {
-  border-color: rgba(245, 158, 11, 0.42);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(254, 205, 26, 0.45);
+  background: rgba(254, 205, 26, 0.08);
 }
 
 .topNav {
@@ -185,7 +187,7 @@ textarea {
   top: 0;
   z-index: 50;
   backdrop-filter: blur(10px);
-  background: rgba(7, 10, 18, 0.45);
+  background: rgba(0, 0, 0, 0.45);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -198,7 +200,7 @@ textarea {
 }
 
 .brand {
-  font-family: Comfortaa, Nunito, system-ui, sans-serif;
+  font-family: Albert Sans, system-ui, sans-serif;
   font-weight: 800;
   letter-spacing: 0.02em;
 }
@@ -216,13 +218,13 @@ textarea {
   border: 1px solid transparent;
   color: rgba(255, 255, 255, 0.86);
   font-weight: 800;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.02);
   transition: border-color 150ms ease, background 150ms ease;
 }
 
 .navLink:hover {
-  border-color: rgba(245, 158, 11, 0.38);
-  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(254, 205, 26, 0.42);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .hero {
@@ -243,7 +245,7 @@ textarea {
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(7, 10, 18, 0.92), rgba(7, 10, 18, 0.55) 60%, rgba(7, 10, 18, 0.35));
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.62) 60%, rgba(0, 0, 0, 0.35));
 }
 
 .heroInner {
@@ -254,7 +256,7 @@ textarea {
 .heroLead {
   font-size: 1.15rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.82);
   max-width: 58ch;
 }
 
@@ -276,11 +278,11 @@ textarea {
   display: inline-flex;
   gap: 0.55rem;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.03);
   padding: 0.55rem 0.75rem;
   border-radius: 999px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
   font-weight: 800;
   font-size: 0.95rem;
 }
@@ -289,7 +291,7 @@ textarea {
   width: 18px;
   height: 18px;
   flex: 0 0 auto;
-  color: var(--accent2);
+  color: var(--accent);
 }
 
 .sectionHeader {
@@ -297,7 +299,7 @@ textarea {
 }
 
 .cardTitle {
-  font-family: Comfortaa, Nunito, system-ui, sans-serif;
+  font-family: Albert Sans, system-ui, sans-serif;
   font-weight: 900;
   letter-spacing: 0.01em;
   font-size: 1.2rem;
@@ -319,10 +321,10 @@ textarea {
 
 .tag {
   font-size: 0.85rem;
-  color: rgba(0, 0, 0, 0.78);
+  color: rgba(0, 0, 0, 0.86);
   font-weight: 900;
-  background: rgba(245, 158, 11, 0.95);
-  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: rgba(254, 205, 26, 0.98);
+  border: 1px solid rgba(254, 205, 26, 0.35);
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
 }
@@ -331,7 +333,7 @@ textarea {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.88);
   font-weight: 900;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.14);
   padding: 0.25rem 0.55rem;
   border-radius: 999px;
@@ -380,8 +382,8 @@ textarea {
 }
 
 .contactBg {
-  background: radial-gradient(800px 450px at 10% 0%, rgba(245, 158, 11, 0.16), transparent 55%),
-    radial-gradient(700px 350px at 90% 20%, rgba(251, 191, 36, 0.12), transparent 55%), var(--panel2);
+  background: radial-gradient(880px 500px at 12% 0%, rgba(254, 205, 26, 0.18), transparent 55%),
+    radial-gradient(800px 450px at 90% 20%, rgba(132, 230, 246, 0.12), transparent 55%), var(--panel2);
 }
 
 .formRow2 {
@@ -428,15 +430,16 @@ textarea {
 }
 
 .contactFormPanel {
-  background: rgba(255, 255, 255, 0.92);
-  color: rgba(0, 0, 0, 0.84);
+  background: rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.92);
   border-radius: 16px;
   padding: 1.25rem 1.15rem;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
 }
 
 .contactFormPanel .field label {
-  color: rgba(0, 0, 0, 0.82);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .footerInner {
