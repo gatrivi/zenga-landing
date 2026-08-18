@@ -7,6 +7,7 @@ import WorkSamples from './components/WorkSamples.jsx';
 import Team from './components/Team.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
+import MotionLayer from './components/MotionLayer.jsx';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
       <a className="skipLink" href="#services">
         Skip to content
       </a>
+      <MotionLayer />
       <Header brand={siteContent.brand} navItems={siteContent.navItems} />
       <main>
         <Hero hero={siteContent.hero} sideImage={siteContent.workSamples?.[0]?.image} />
@@ -26,4 +28,3 @@ export default function App() {
     </>
   );
 }
-
