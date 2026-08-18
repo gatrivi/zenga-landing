@@ -1,0 +1,408 @@
+/* Motion and interaction layer. Kept separate so the visual system stays easy to tune/remove. */
+
+:root {
+  --scroll-progress: 0;
+  --pointer-x: 50vw;
+  --pointer-y: 35vh;
+}
+
+.motionLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scrollProgress {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  transform: scaleX(var(--scroll-progress));
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  box-shadow: 0 0 18px rgba(254, 205, 26, 0.38);
+  will-change: transform;
+}
+
+.pointerAura {
+  position: absolute;
+  inset: 0;
+  opacity: 0.58;
+  background: radial-gradient(
+    300px circle at var(--pointer-x) var(--pointer-y),
+    rgba(132, 230, 246, 0.065),
+    transparent 72%
+  );
+  transition: opacity 300ms ease;
+}
+
+.motion-ready .reveal {
+  opacity: 0;
+  translate: 0 18px;
+  scale: 0.985;
+  filter: blur(5px);
+  transition:
+    opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    translate 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 560ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 560ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.motion-ready .reveal.isVisible {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+  filter: blur(0);
+}
+
+.topNav {
+  transition:
+    background 240ms ease,
+    border-color 240ms ease,
+    box-shadow 240ms ease,
+    backdrop-filter 240ms ease;
+}
+
+.topNav.isScrolled {
+  background: rgba(0, 0, 0, 0.76);
+  border-bottom-color: rgba(254, 205, 26, 0.18);
+  box-shadow: 0 12px 38px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(16px) saturate(1.2);
+}
+
+.brand {
+  transition: color 180ms ease, text-shadow 180ms ease;
+}
+
+.brand:hover {
+  color: #fff;
+  text-shadow: 0 0 22px rgba(254, 205, 26, 0.24);
+}
+
+.navLink {
+  position: relative;
+  overflow: hidden;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0.9rem;
+  right: 0.9rem;
+  bottom: 0.35rem;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 190ms ease;
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+.hero {
+  overflow: clip;
+}
+
+.heroBg {
+  transform: scale(1.035);
+  animation: heroBreath 16s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.heroOverlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, transparent 4%, #000 45%, transparent 100%);
+  animation: gridDrift 20s linear infinite;
+}
+
+.heroSideCard {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  position: relative;
+  transform: perspective(950px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x));
+  transition:
+    transform 180ms ease-out,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+  will-change: transform;
+}
+
+.heroSideCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.13), transparent 25%, transparent 70%, rgba(254, 205, 26, 0.08));
+  opacity: 0.5;
+  transition: opacity 220ms ease;
+}
+
+.heroSideCard:hover {
+  border-color: rgba(132, 230, 246, 0.34);
+  box-shadow:
+    0 26px 72px rgba(0, 0, 0, 0.46),
+    0 0 0 1px rgba(132, 230, 246, 0.06);
+}
+
+.heroSideCard:hover::after {
+  opacity: 0.82;
+}
+
+.heroSideCard img,
+.workImage img,
+.socialIcon img {
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1), filter 260ms ease;
+}
+
+.heroSideCard:hover img {
+  transform: scale(1.025);
+}
+
+.workImage {
+  overflow: hidden;
+}
+
+.cardHover:hover .workImage img {
+  transform: scale(1.055);
+  filter: saturate(1.08) contrast(1.03);
+}
+
+.cardHover {
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.cardHover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    220px circle at var(--card-x, 50%) var(--card-y, 50%),
+    rgba(132, 230, 246, 0.11),
+    transparent 66%
+  );
+  transition: opacity 220ms ease;
+}
+
+.cardHover:hover {
+  transform: translateY(-5px);
+  border-color: rgba(254, 205, 26, 0.42);
+  box-shadow:
+    0 26px 68px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(254, 205, 26, 0.035);
+}
+
+.cardHover:hover::before {
+  opacity: 1;
+}
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 170ms cubic-bezier(0.22, 1, 0.36, 1),
+    background 170ms ease,
+    border-color 170ms ease,
+    box-shadow 170ms ease;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: -120%;
+  left: -35%;
+  width: 28%;
+  height: 340%;
+  transform: rotate(20deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.34), transparent);
+  transition: left 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:hover::after,
+.btn:focus-visible::after {
+  left: 118%;
+}
+
+.btnPrimary:hover {
+  box-shadow: 0 9px 28px rgba(254, 205, 26, 0.18);
+}
+
+.btnSecondary:hover {
+  box-shadow: 0 9px 24px rgba(132, 230, 246, 0.09);
+}
+
+.btn:active {
+  transform: translateY(1px) scale(0.985);
+}
+
+.pill,
+.tag,
+.tagSoft {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.pill:hover,
+.tagSoft:hover {
+  transform: translateY(-2px);
+  border-color: rgba(132, 230, 246, 0.34);
+}
+
+.heroBullets .pill:nth-child(2n) {
+  animation-delay: -2.2s;
+}
+
+.heroBullets .pill:nth-child(3n) {
+  animation-delay: -4.1s;
+}
+
+.heroBullets .pill {
+  animation: pillFloat 6.5s ease-in-out infinite;
+}
+
+.field input,
+.field textarea {
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.field input:hover,
+.field textarea:hover {
+  background: #fff;
+}
+
+.field input:focus,
+.field textarea:focus {
+  transform: translateY(-1px);
+  border-color: rgba(254, 205, 26, 0.86);
+  box-shadow:
+    0 0 0 3px rgba(254, 205, 26, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.16);
+  background: #fff;
+}
+
+.socialIcon {
+  display: inline-flex;
+  border-radius: 10px;
+  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), filter 180ms ease;
+}
+
+.socialIcon:hover {
+  transform: translateY(-3px) rotate(-2deg);
+  filter: brightness(1.12);
+}
+
+.socialIcon:hover img {
+  transform: scale(1.06);
+}
+
+@keyframes heroBreath {
+  from {
+    transform: scale(1.035) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.075) translate3d(-0.7%, -0.6%, 0);
+  }
+}
+
+@keyframes gridDrift {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 48px 48px, 48px 48px;
+  }
+}
+
+@keyframes pillFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@media (pointer: coarse) {
+  .pointerAura {
+    display: none;
+  }
+
+  .cardHover:hover,
+  .btn:hover,
+  .pill:hover,
+  .tagSoft:hover,
+  .socialIcon:hover {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-ready .reveal,
+  .motion-ready .reveal.isVisible {
+    opacity: 1;
+    translate: none;
+    scale: 1;
+    filter: none;
+    transition: none;
+  }
+
+  .heroBg,
+  .heroOverlay::after,
+  .heroBullets .pill {
+    animation: none;
+  }
+
+  .heroSideCard,
+  .cardHover,
+  .btn,
+  .navLink,
+  .field input,
+  .field textarea,
+  .socialIcon,
+  .socialIcon img,
+  .workImage img,
+  .heroSideCard img {
+    transition-duration: 0.01ms !important;
+  }
+
+  .pointerAura {
+    display: none;
+  }
+}
