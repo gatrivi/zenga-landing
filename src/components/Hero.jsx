@@ -36,7 +36,13 @@ export default function Hero({ hero, sideImage }) {
 
           {sideImage ? (
             <div className="heroSideCard" aria-hidden="true">
-              <img src={sideImage} alt="" />
+              <img
+                src={sideImage}
+                alt=""
+                decoding="async"
+                fetchPriority="high"
+                style={{ objectFit: 'contain', objectPosition: 'top center' }}
+              />
             </div>
           ) : null}
         </div>
@@ -44,4 +50,3 @@ export default function Hero({ hero, sideImage }) {
     </section>
   );
 }
-
