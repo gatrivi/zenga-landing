@@ -33,7 +33,13 @@ export default function Team({ team }) {
                 aria-label={`${m.name} (${m.role})`}
               >
                 <div className="workImage" style={{ height: 190 }}>
-                  <img src={m.image} alt={m.name} />
+                  <img
+                    src={m.image}
+                    alt={m.name}
+                    loading="lazy"
+                    decoding="async"
+                    style={{ objectPosition: 'center 30%', display: 'block' }}
+                  />
                 </div>
                 <div className="cardPad">
                   <h3 className="cardTitle" style={{ fontSize: '1.05rem' }}>
@@ -51,4 +57,3 @@ export default function Team({ team }) {
     </section>
   );
 }
-
