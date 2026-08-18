@@ -18,7 +18,13 @@ export default function WorkSamples({ samples, testimonials }) {
             {samples.map((s) => (
               <article key={s.title} className="card cardHover">
                 <div className="workImage" style={{ height: 170 }}>
-                  <img src={s.image} alt={s.title} />
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    loading="lazy"
+                    decoding="async"
+                    style={{ objectFit: 'contain', objectPosition: 'top center', display: 'block' }}
+                  />
                 </div>
                 <div className="cardPad">
                   <h3 className="cardTitle">{s.title}</h3>
@@ -48,4 +54,3 @@ export default function WorkSamples({ samples, testimonials }) {
     </section>
   );
 }
-
