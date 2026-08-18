@@ -3,7 +3,13 @@ export default function Testimonials({ testimonials, mode = 'section' }) {
     <div className="card" style={{ padding: mode === 'card' ? '1.1rem' : '1.2rem' }}>
       <div className="contactCard">
         <div className="workImage" style={{ height: mode === 'card' ? 240 : 270, borderRadius: 16 }}>
-          <img src={testimonials.image} alt={testimonials.author} />
+          <img
+            src={testimonials.image}
+            alt={testimonials.author}
+            loading="lazy"
+            decoding="async"
+            style={{ objectPosition: 'center 30%', display: 'block' }}
+          />
         </div>
 
         <div>
@@ -60,4 +66,3 @@ export default function Testimonials({ testimonials, mode = 'section' }) {
     </section>
   );
 }
-
